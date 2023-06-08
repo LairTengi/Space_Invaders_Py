@@ -6,10 +6,10 @@ import pygame
 
 from Bullets.Bullet import Bullet
 from Bullets.Bomb import Bomb
-from Mystery_ship import MysteryShip
+from models.Mystery_ship import MysteryShip
 from Settings import Settings
-from Ship import Ship
-from Invader import Invader
+from models.Ship import Ship
+from models.Invader import Invader
 from Stats.GameStatistics import GameStats
 from Stats.ScoreTable import ScoreTable
 from Buttons.Button import Button
@@ -289,10 +289,13 @@ class SpaceInvaders:
             if self.FIRST_GAME:
                 self._prepare_game()
                 self.FIRST_GAME = False
+                pygame.mixer.music.play()
             else:
                 self.stats.game_active = True
+                pygame.mixer.music.play()
         elif event.key == pygame.K_p and self.stats.game_active:
             self.stats.game_active = False
+            pygame.mixer.music.pause()
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -304,9 +307,11 @@ class SpaceInvaders:
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
             self._prepare_game()
+            pygame.mixer.music.play()
 
     def _prepare_game(self):
         if not self.stats.game_active:
+            pygame.mixer.music.load('music/test.mp3')
             self.settings.initialize_dynamic_settings()  # Сброс игровых настроек
             self.stats.reset_stats()  # Сброс игровой статистики
             self.stats.game_active = True
@@ -325,6 +330,7 @@ class SpaceInvaders:
     # Красивый выход
     def graceful_shutdown(self):
         self.save_stats()
+        pygame.mixer.music.stop()
         sys.exit(0)
 
     def save_stats(self):

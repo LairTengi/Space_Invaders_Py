@@ -57,24 +57,6 @@ class SpaceInvaders:
 
             update_screen(self)
 
-    # def _prepare_game(self):
-    #     if not self.stats.game_active:
-    #         pygame.mixer.music.load('music/test.mp3')
-    #         self.settings.initialize_dynamic_settings()  # Сброс игровых настроек
-    #         self.stats.reset_stats()  # Сброс игровой статистики
-    #         self.stats.game_active = True
-    #
-    #         self.score_table.prep_score()
-    #         self.score_table.prep_level()
-    #         self.score_table.prep_life()
-    #         self.score_table.prep_bombs()
-    #         self.score_table.prep_high_score()
-    #
-    #         self.invaders.empty()
-    #         self.bullets.empty()
-    #         create_armada(self)
-    #         self.ship.center_ship()
-
 
 if __name__ == "__main__":
     ai = SpaceInvaders()

@@ -1,6 +1,3 @@
-import time
-
-from Bullets.Bullet import Bullet
 from Bullets.Bomb import Bomb
 
 
